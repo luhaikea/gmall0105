@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ ddddddkkkiiiiwwwggggggggggggg
+
+ <p th:text="${hello}">打底值</p>
+<!--打底值是原始数据当hello数据没有显示出来就会显示打底值-->
+
+   <p th:each="str:${list}" th:text="${str}"></p>
+
+   <div th:each="str:${list}">
+     <p th:text="${str}"/>
+   </div>
+
+   <p th:text="(${id=='10'})?'是10':'不是10'"></p>
+   <p th:if="${id}=='10'">123456</p>
+
+   <input type="checkbox" th:checked="${id}=='10'">
+   <br/>
+   <!--单引号起到一个转义的作用告诉单引号不是thymeleaf的表达式而是其他语言的表达式-->
+   <a th:href="'javascript:a(\''+${hello}+'\');'">点我</a>
+   <!-- href="'javascript 这个单引号是在th中使用js  -->
+   <!-- \'  这个单引号是js传参字符串单引号 js中传参如果是数字不需要加单引号 如果是字符串则需要加单引号   -->
+   <!--  '+$  -->
+
+
+    <div th:include="indexInner">页面引入</div>
+    <!--引入片段-->
+    <div th:include="indexInner::innerPart">页面引入</div>
+<script language="JavaScript">
+    function a(str) {
+        alert("sssssssssssss"+str);
+    }
+</script>
+</body>
+</html>
